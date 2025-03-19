@@ -1,0 +1,34 @@
+setwd("D:/r labs/data/")
+T<-read.table("reg.txt", header=TRUE)
+second_var = "A12"
+T<-T[order(T$A1),]
+reg9<-lm(formula=T[[second_var]] ~T$A1)
+
+reg9.1<-lm(formula=T[[second_var]] ~log(T$A1)) 
+summary(reg9.1)
+plot(x=T$A1,y=T[[second_var]]) # нарисовать диаграмму рассеяния
+abline(reg9, col="red") # нарисовать линейную регрессию
+coef(reg9.1)[1]
+coef(reg9.1)[2]
+curve(coef(reg9.1)[1] + coef(reg9.1)[2]*log(x), add=TRUE, col="green")
+plot(reg9.1$residuals, main="График остатков", xlab="Номер наблюдения", ylab="Остатки")
+abline(h=0, col="red")
+library("forecast") 
+accuracy(reg9.1)
+coef(reg9.1)[1] + coef(reg9.1)[2]*log(1350)
+
+library(nls2)
+nlc <- nls.control(maxiter = 200)
+reg9.2<-nls(T[[second_var]]~p1 + p2/(p3 + T$A1), control = nlc, data=T, start=list(p1=500, p2=-1000, p3=-1000))
+summary(reg9.2)
+P<-coef(reg9.2)
+plot(x=T$A1,y=T[[second_var]])
+abline(reg9, col="red")
+curve(coef(reg9.1)[1] + coef(reg9.1)[2]*log(x), add=TRUE, col="green")
+curve(P[1] + P[2]/(x+P[3]), add=TRUE, col="blue") 
+plot(reg9.2$m$resid(), main="График остатков", xlab="Номер наблюдения", ylab="Остатки")
+abline(h=0, col="red")
+sum(abs((T[[second_var]] - (P[1]+ P[2]/(P[3]+T$A1)))/T[[second_var]]))/length(T[[second_var]])*100
+P[1] + P[2]/(P[3] + 1350)
+P
+
