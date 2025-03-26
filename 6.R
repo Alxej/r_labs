@@ -9,7 +9,7 @@ plot(M$Price2, main="Цена на молоко", ylab="цена, руб.", xlab
 reg2<-lm(M$Price2~x)
 abline(reg2)
 
-reg4<-nls(M$Price2~p1 * exp(p2*x), data=M, start=list(p1=1, p2=0), algorithm = "port") # построить нелинейную регрессию с параметрами
+reg4<-nls(M$Price2~(p2 * (p1 + x) * (p1 + x)+ p3), data=M,start=list(p1=-500, p2=-500, p3=100)) # построить нелинейную регрессию с параметрами
 summary(reg4) # вывести коэффициенты регрессии
 P<-coef(reg4) # сохранить коэффициенты регрессии в переменной Р
 curve((P[2] * (P[1] + x) * (P[1] + x)+ P[3]), add=TRUE, col="blue") # нарисовать нелинейную регрессию
