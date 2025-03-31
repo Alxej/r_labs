@@ -1,4 +1,4 @@
-setwd("D:/r labs/data/")
+setwd("C:/xd/r_labs/data/")
 
 M<-read.csv2("Milk.csv", header=TRUE, sep=";" , dec = ",")
 View(M)
