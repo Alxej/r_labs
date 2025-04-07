@@ -5,9 +5,10 @@ mu <- c(2.5, 3.0, 4.2)
 sig <- matrix(c(1.0, 0.5, 0.2,   0.5, 1.0, 0.4,  0.2, 0.4, 1.0 ), ncol=3, byrow=TRUE)
 
 C <- t(chol(sig))
+C
 
 Y = t(mvrnorm(k, c(0, 0, 0), diag(n)))
-
+Y
 Z <- C %*% Y + mu
 
 cov_mat = cov(t(Z))

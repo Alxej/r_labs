@@ -6,20 +6,19 @@ c <- 3 * 10^(8)
 ok <- 0
 
 
-
 for (a in 1:k) {
   n <- rpois(1, lambda) + 1 # кол-во фотонов
-  
   t <- c()
   
   for (i in 1:n){
     y0 <- runif(1, 0, D)
     alp <- runif(1, 0, 2*pi)
+    # Фотон движется вверх
     if (alp > 0 & alp < pi){
-      s <- (D -y0) / sin(alp)
+      s <- (D -y0) / sin(alp) # расстояние до верхней границы
       time <- s/c
       t <- c(t, time)
-    } else if(alp < 2*pi & alp > pi){
+    } else if(alp < 2*pi & alp > pi){ # Фотон движется вниз
       s <- y0 / -(sin(alp))
       time <- s/c
       t <- c(t, time)

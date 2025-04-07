@@ -6,15 +6,15 @@ u_max <- 2 * pi
 v_min <- 0
 v_max <- 2 * pi
 
-M <- sqrt((2 * pi)^2 + 1)
+#M <- sqrt((2 * pi)^2 + 1)
 
 
 p <- function(u) {
-  integral_value <- integrate(function(u) sqrt(u^2 + 1), 0, 2 * pi)$value
+  integral_value <- integrate(function(u) sqrt(u^2 + 1), u_min, u_max)$value
   return(sqrt(u^2 + 1) / integral_value)
 }
-#M <- optimize(p, lower= 0, upper= 2*pi, maximum=TRUE)$objective
-
+M <- optimize(p, lower= 0, upper= 2*pi, maximum=TRUE)$objective
+M
 
 generate_u <- function(n) {
   i <- 1

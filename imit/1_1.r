@@ -12,8 +12,7 @@ v<- numeric(n)
 a <- -1
 b <- 2* pi
 
-# Метод Неймана
-M = optimize(f, lower= a, upper= b, maximum=TRUE)$objective # Максимум функции на заданом отрезке
+M = 3/(4 * pi) # Максимум функции на заданом отрезке
 
 while(i<n){
   u1 <- runif(1, 0, 1)
