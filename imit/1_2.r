@@ -26,7 +26,8 @@ cor_teor
 t = (0.5 * log((1 + cor) / (1 - cor)) - 0.5 * log((1 + cor_teor) / (1 - cor_teor))) / (1 / sqrt(k - 3))
 t
 
-p_value <- 2 * pnorm(-abs(t_stat))
+p_value <- 2 * pnorm(-abs(t))
+p_value
 
 qnorm(0.95)
 if (abs(t) < qnorm(0.95)) {
