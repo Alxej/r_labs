@@ -48,7 +48,7 @@ monte_carlo <- function(triangle1, triangle2, p, plot_points = FALSE){
   }
   
   rect_area <- (max_x - min_x)*(max_y - min_y)
-  prob <- k/p
+  prob <- k / p
   s <- rect_area * prob
   
   if(plot_points) {
