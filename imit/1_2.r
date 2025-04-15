@@ -1,4 +1,5 @@
 library(MASS)
+library(ggplot2)
 n <- 3
 k <- 1000
 mu <- c(2.5, 3.0, 4.2)
@@ -25,10 +26,17 @@ cor_teor
 
 t = (0.5 * log((1 + cor) / (1 - cor)) - 0.5 * log((1 + cor_teor) / (1 - cor_teor))) / (1 / sqrt(k - 3))
 t
+<<<<<<< HEAD
 p_value <- 2 * pnorm(-abs(t))
 p_value1 <- 2 * (1 - pnorm(abs(t)))
 p_value
 p_value1
+=======
+
+p_value <- 2 * pnorm(-abs(t))
+p_value
+
+>>>>>>> 1a69e3574010082f47cc7e91ad02c2499036c65a
 qnorm(0.95)
 
 if (abs(t) < qnorm(0.95)) {
